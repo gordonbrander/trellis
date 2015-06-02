@@ -1,7 +1,7 @@
 A hacked together web service that creates a Trello card whenever a new Github issue is created.
 
-Configuration
--------------
+App Configuration
+-----------------
 
 Create a `trellis.json` in the same directory as `index.js`, with the following
 fields:
@@ -36,16 +36,29 @@ Get the list ID:
 2. Open your board in the browser. Note down the `BOARD_ID` in the URL: `https://trello.com/b/<BOARD_ID>/my-board-name`
 3. Load `https://api.trello.com/1/board/<BOARD_ID>/lists?key=<KEY>&token=<TOKEN>`, replacing `<BOARD_ID>`, `<KEY>` and `<TOKEN>` with the values from above. You'll see a JSON blob containing all of your lists. Identify the correct list and copy the list ID.
 
-Setting up Github Webhooks
---------------------------
 
-https://developer.github.com/webhooks/
-https://developer.github.com/v3/repos/hooks/
+Setting up with Github Webhooks
+-------------------------------
+
+1. Go to the webhook settings page for your repository and create a new hook (`https://github.com/gordonbrander/trellis/settings/hooks/new`).
+2. In the `Payload URL` field, type `http://<MY_DOMAIN>/posthook`, where `<MY_DOMAIN>` is the domain at which Trellis is hosted.
+3. Under `Which events would you like to trigger this webhook?`, select `Issues`.
+
+Webhook docs: https://developer.github.com/webhooks/
+
+
+Deploying on Heroku
+-------------------
+
+- Make sure to add a `trellis.json` file (see above)!
+- Check out https://devcenter.heroku.com/articles/getting-started-with-nodejs#introduction
+- Download the Heroku Toolbelt https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up
+- Deploy https://devcenter.heroku.com/articles/getting-started-with-nodejs#deploy-the-app
 
 
 Checklist
 ---------
 
-- [] Create cards when issues are created
-- [] Archive cards when issues are closed
-- [] Un-archive cards and add to list when issues are re-opened
+- [x] Create cards when issues are created
+- [ ] Archive cards when issues are closed
+- [ ] Un-archive cards and add to list when issues are re-opened
