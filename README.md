@@ -60,5 +60,6 @@ Checklist
 ---------
 
 - [x] Create cards when issues are created
-- [ ] Archive cards when issues are closed
+- [ ] Archive cards when issues are closed (or move to "closed" list if closed by PR?)
 - [ ] Un-archive cards and add to list when issues are re-opened
+- [ ] Add DB to map card IDs to issue IDs, allowing us to update Trello Cards when issue is updated.
